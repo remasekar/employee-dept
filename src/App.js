@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {deptChange, call_api_emp} from '../src/actions/values'
+import {deptChange, call_api_emp,clear_details} from '../src/actions/values'
 
 
 class App extends React.Component{
@@ -35,7 +35,7 @@ handlegetdetails = () => {
 }
 
 handleClear = () => {
-
+  this.props.dispatch(clear_details())
 }
 
   render()
@@ -60,7 +60,7 @@ handleClear = () => {
               <label class="ms-Label">Employee Id:</label><br/>
               <i class="ms-Dropdown-caretDown ms-Icon ms-Icon--ChevronDown"></i>
               <select onChange={this.handleEmpChange} value= {this.state.emp}>
-                { this.props.empValues !== 0 && this.props.empValues.map(emp => <option value={emp}> { emp }</option>)}
+                {!this.props.empValues ? <option> Select </option> : ( this.props.empValues.length !== 0 && this.props.empValues.map(emp => <option value={emp}> { emp }</option>)) }
               </select>
             </span>
            </div>
@@ -81,7 +81,12 @@ handleClear = () => {
             </div>
             <div className="row mb-4">
             <div className="col-md-6 offset-2">
-            <h4>{this.props.empDetails && this.props.empDetails.first_name}</h4>
+            {this.props.empDetails && (
+              <div>
+                <h5>Id: {this.props.empDetails.id}</h5>
+                <h5>Name: {this.props.empDetails.first_name}</h5>
+              </div>
+            )}
             </div>
             </div>
        </div>     
@@ -91,11 +96,13 @@ handleClear = () => {
 }
 
 const mapStateToProps = (state) => {
-  return ({
-       empValues: state.values.employees,
-       empDetails: state.values.Emp.data
-
-  })
+       if (state.values.employees )
+       {
+         return (
+           {
+            empValues: state.values.employees,
+            empDetails: state.values.Emp.data} )
+      }
 }  
 
 export default connect(mapStateToProps)(App)

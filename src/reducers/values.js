@@ -1,8 +1,8 @@
 let valuesinitial = {
   Dept: 
     {
-    HR: [1,2,3,4,5],
-    ENG: [6,7,8,9,10]
+    HR: ['select',1,2,3,4,5],
+    ENG: ['select',6,7,8,9,10]
     },
     employees: [],
   Emp: {}
@@ -19,6 +19,10 @@ const valuesReducer = ( state = valuesinitial , action ) => {
         return {...state,...{Emp:action.payload}}
       default: 
         return {...state}
+      case 'CLEAR_DETAILS':
+        return (
+          state = valuesinitial
+        )
     }
 }
 

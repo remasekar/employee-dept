@@ -9,7 +9,6 @@ export const deptChange = (dept) => {
 
 export const load_emp_details = (emp) =>
 {
-    console.log("emp in action ",emp)
     return {
         type: 'LOAD_EMP_DETAILS',
         payload: emp
@@ -26,6 +25,13 @@ export const call_api_emp = (emp) =>
             const emp = response.data
             dispatch(load_emp_details(emp))
         })
+    }
+}
+
+export const clear_details = () =>
+{
+    return {
+        type: "CLEAR_DETAILS"
     }
 }
 
