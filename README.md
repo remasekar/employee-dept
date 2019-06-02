@@ -1,5 +1,8 @@
 This project was to fetch employee details displaying image and name - developed in redux react
-Live link - https://react-redux-emp-details.herokuapp.com/
+
+##Live link
+
+https://react-redux-emp-details.herokuapp.com/
 
 ## Available Scripts
 
