@@ -13,4 +13,4 @@ In the project directory, you can run:
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-![](/Users/revathisekar/mern-jan-weekend-2019/practise/redux/emp-dept)
+![](https://github.com/remasekar/employee-dept/blob/master/emp-details.png)
